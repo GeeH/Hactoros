@@ -1,7 +1,7 @@
 Hactoros
 ==============
 
-> This is a fork of Hactoros which is intended to model PSR-7 HTTP messages on HHVM using Hack.
+> This is a fork of `zend-diactoros` which is intended to model PSR-7 HTTP messages on HHVM using Hack.
 > This docuementation is a find and replace of the original documentation, but will be updated at some point
 
 
