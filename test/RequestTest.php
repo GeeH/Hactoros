@@ -10,9 +10,9 @@
 namespace ZendTest\Diactoros;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Diactoros\Request;
-use Zend\Diactoros\Stream;
-use Zend\Diactoros\Uri;
+use GeeH\Hactoros\Request;
+use GeeH\Hactoros\Stream;
+use GeeH\Hactoros\Uri;
 
 class RequestTest extends TestCase
 {

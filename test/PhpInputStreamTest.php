@@ -10,7 +10,7 @@
 namespace ZendTest\Diactoros;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Diactoros\PhpInputStream;
+use GeeH\Hactoros\PhpInputStream;
 
 class PhpInputStreamTest extends TestCase
 {

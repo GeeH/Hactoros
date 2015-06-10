@@ -10,10 +10,10 @@
 namespace ZendTest\Diactoros;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Diactoros\HeaderSecurity;
+use GeeH\Hactoros\HeaderSecurity;
 
 /**
- * Tests for Zend\Diactoros\HeaderSecurity.
+ * Tests for GeeH\Hactoros\HeaderSecurity.
  *
  * Tests are largely derived from those for Zend\Http\Header\HeaderValue in
  * Zend Framework, released with the copyright and license below.

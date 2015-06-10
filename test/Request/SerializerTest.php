@@ -10,11 +10,11 @@
 namespace ZendTest\Diactoros\Request;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Diactoros\RelativeStream;
-use Zend\Diactoros\Request;
-use Zend\Diactoros\Request\Serializer;
-use Zend\Diactoros\Stream;
-use Zend\Diactoros\Uri;
+use GeeH\Hactoros\RelativeStream;
+use GeeH\Hactoros\Request;
+use GeeH\Hactoros\Request\Serializer;
+use GeeH\Hactoros\Stream;
+use GeeH\Hactoros\Uri;
 
 class SerializerTest extends TestCase
 {
@@ -214,7 +214,7 @@ class SerializerTest extends TestCase
         $request = Serializer::fromString($text);
 
         $this->assertInstanceOf('Psr\Http\Message\RequestInterface', $request);
-        $this->assertInstanceOf('Zend\Diactoros\Request', $request);
+        $this->assertInstanceOf('GeeH\Hactoros\Request', $request);
 
         $this->assertTrue($request->hasHeader('X-Foo-Bar'));
         $values = $request->getHeader('X-Foo-Bar');
@@ -237,7 +237,7 @@ class SerializerTest extends TestCase
         $request = Serializer::fromString($text);
 
         $this->assertInstanceOf('Psr\Http\Message\RequestInterface', $request);
-        $this->assertInstanceOf('Zend\Diactoros\Request', $request);
+        $this->assertInstanceOf('GeeH\Hactoros\Request', $request);
 
         $this->assertTrue($request->hasHeader('X-Foo-Bar'));
         $this->assertEquals('Baz;Bat', $request->getHeaderLine('X-Foo-Bar'));
@@ -324,6 +324,6 @@ class SerializerTest extends TestCase
             }));
 
         $stream = Serializer::fromStream($stream);
-        $this->assertInstanceOf('Zend\Diactoros\RelativeStream', $stream->getBody());
+        $this->assertInstanceOf('GeeH\Hactoros\RelativeStream', $stream->getBody());
     }
 }

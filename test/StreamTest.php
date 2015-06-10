@@ -11,7 +11,7 @@ namespace ZendTest\Diactoros;
 
 use PHPUnit_Framework_TestCase as TestCase;
 use ReflectionProperty;
-use Zend\Diactoros\Stream;
+use GeeH\Hactoros\Stream;
 
 class StreamTest extends TestCase
 {
@@ -32,14 +32,14 @@ class StreamTest extends TestCase
 
     public function testCanInstantiateWithStreamIdentifier()
     {
-        $this->assertInstanceOf('Zend\Diactoros\Stream', $this->stream);
+        $this->assertInstanceOf('GeeH\Hactoros\Stream', $this->stream);
     }
 
     public function testCanInstantiteWithStreamResource()
     {
         $resource = fopen('php://memory', 'wb+');
         $stream   = new Stream($resource);
-        $this->assertInstanceOf('Zend\Diactoros\Stream', $stream);
+        $this->assertInstanceOf('GeeH\Hactoros\Stream', $stream);
     }
 
     public function testIsReadableReturnsFalseIfStreamIsNotReadable()

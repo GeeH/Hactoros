@@ -10,7 +10,7 @@
 namespace ZendTest\Diactoros;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Diactoros\Uri;
+use GeeH\Hactoros\Uri;
 
 class UriTest extends TestCase
 {

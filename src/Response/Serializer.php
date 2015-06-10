@@ -1,4 +1,4 @@
-<?php
+<?hh // decl
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -7,15 +7,15 @@
  * @license   https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Diactoros\Response;
+namespace GeeH\Hactoros\Response;
 
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use UnexpectedValueException;
-use Zend\Diactoros\AbstractSerializer;
-use Zend\Diactoros\Response;
-use Zend\Diactoros\Stream;
+use GeeH\Hactoros\AbstractSerializer;
+use GeeH\Hactoros\Response;
+use GeeH\Hactoros\Stream;
 
 final class Serializer extends AbstractSerializer
 {

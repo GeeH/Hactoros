@@ -10,8 +10,8 @@
 namespace ZendTest\Diactoros;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Diactoros\Request;
-use Zend\Diactoros\Stream;
+use GeeH\Hactoros\Request;
+use GeeH\Hactoros\Stream;
 
 class MessageTraitTest extends TestCase
 {

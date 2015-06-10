@@ -10,9 +10,9 @@
 namespace ZendTest\Diactoros\Response;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Diactoros\Response;
-use Zend\Diactoros\Response\SapiEmitter;
-use Zend\Diactoros\Stream;
+use GeeH\Hactoros\Response;
+use GeeH\Hactoros\Response\SapiEmitter;
+use GeeH\Hactoros\Stream;
 use ZendTest\Diactoros\TestAsset\HeaderStack;
 
 class SapiEmitterTest extends TestCase

@@ -1,4 +1,4 @@
-<?php
+<?hh
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -7,7 +7,7 @@
  * @license   https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Diactoros\Response;
+namespace GeeH\Hactoros\Response;
 
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;

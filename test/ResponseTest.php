@@ -10,8 +10,8 @@
 namespace ZendTest\Diactoros;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Diactoros\Response;
-use Zend\Diactoros\Stream;
+use GeeH\Hactoros\Response;
+use GeeH\Hactoros\Stream;
 
 class ResponseTest extends TestCase
 {

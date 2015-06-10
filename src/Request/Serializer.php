@@ -1,4 +1,4 @@
-<?php
+<?hh // decl
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -7,16 +7,16 @@
  * @license   https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Diactoros\Request;
+namespace GeeH\Hactoros\Request;
 
 use InvalidArgumentException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamInterface;
 use UnexpectedValueException;
-use Zend\Diactoros\AbstractSerializer;
-use Zend\Diactoros\Request;
-use Zend\Diactoros\Stream;
-use Zend\Diactoros\Uri;
+use GeeH\Hactoros\AbstractSerializer;
+use GeeH\Hactoros\Request;
+use GeeH\Hactoros\Stream;
+use GeeH\Hactoros\Uri;
 
 /**
  * Serialize (cast to string) or deserialize (cast string to Request) messages.

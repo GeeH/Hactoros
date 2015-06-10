@@ -48,14 +48,14 @@ A client will _send_ a request, and _return_ a response. As a developer, you wil
 
 ```php
 // Create a request
-$request = (new Zend\Diactoros\Request())
-    ->withUri(new Zend\Diactoros\Uri('http://example.com'))
+$request = (new GeeH\Hactoros\Request())
+    ->withUri(new GeeH\Hactoros\Uri('http://example.com'))
     ->withMethod('PATCH')
     ->withAddedHeader('Authorization', 'Bearer ' . $token)
     ->withAddedHeader('Content-Type', 'application/json');
 
 // OR:
-$request = new Zend\Diactoros\Request(
+$request = new GeeH\Hactoros\Request(
     'http://example.com',
     'PATCH',
     'php://memory',
@@ -91,7 +91,7 @@ Server-side applications will need to marshal the incoming request based on supe
 
 #### Marshaling an incoming request
 
-PHP contains a plethora of information about the incoming request, and keeps that information in a variety of locations. `Zend\Diactoros\ServerRequestFactory::fromGlobals()` can simplify marshaling that information into a request instance.
+PHP contains a plethora of information about the incoming request, and keeps that information in a variety of locations. `GeeH\Hactoros\ServerRequestFactory::fromGlobals()` can simplify marshaling that information into a request instance.
 
 You can call the factory method with or without the following arguments, in the following order:
 
@@ -101,10 +101,10 @@ You can call the factory method with or without the following arguments, in the 
 - `$cookies`, typically `$_COOKIE`
 - `$files`, typically `$_FILES`
 
-The method will then return a `Zend\Diactoros\ServerRequest` instance. If any argument is omitted, the associated superglobal will be used.
+The method will then return a `GeeH\Hactoros\ServerRequest` instance. If any argument is omitted, the associated superglobal will be used.
 
 ```php
-$request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
+$request = GeeH\Hactoros\ServerRequestFactory::fromGlobals(
   $_SERVER,
   $_GET,
   $_POST,
@@ -118,7 +118,7 @@ $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
 Use the response object to add headers and provide content for the response.  Writing to the body does not create a state change in the response, so it can be done without capturing the return value. Manipulating headers does, however.
 
 ```php
-$response = new Zend\Diactoros\Response();
+$response = new GeeH\Hactoros\Response();
 
 // Write to the response body:
 $response->getBody()->write("some content\n");
@@ -135,13 +135,13 @@ $response = $response
 
 #### "Serving" an application
 
-`Zend\Diactoros\Server` mimics a portion of the API of node's `http.Server` class. It invokes a callback, passing it an `ServerRequest`, an `Response`, and optionally a callback to use for incomplete/unhandled requests.
+`GeeH\Hactoros\Server` mimics a portion of the API of node's `http.Server` class. It invokes a callback, passing it an `ServerRequest`, an `Response`, and optionally a callback to use for incomplete/unhandled requests.
 
 You can create a server in one of three ways:
 
 ```php
 // Direct instantiation, with a callback handler, request, and response
-$server = new Zend\Diactoros\Server(
+$server = new GeeH\Hactoros\Server(
     function ($request, $response, $done) {
         $response->getBody()->write("Hello world!");
     },
@@ -150,7 +150,7 @@ $server = new Zend\Diactoros\Server(
 );
 
 // Using the createServer factory, providing it with the various superglobals:
-$server = Zend\Diactoros\Server::createServer(
+$server = GeeH\Hactoros\Server::createServer(
     function ($request, $response, $done) {
         $response->getBody()->write("Hello world!");
     },
@@ -162,7 +162,7 @@ $server = Zend\Diactoros\Server::createServer(
 );
 
 // Using the createServerFromRequest factory, and providing it a request:
-$server = Zend\Diactoros\Server::createServerfromRequest(
+$server = GeeH\Hactoros\Server::createServerfromRequest(
   function ($request, $response, $done) {
       $response->getBody()->write("Hello world!");
   },
@@ -202,7 +202,7 @@ API
 
 ### Request Message
 
-`Zend\Diactoros\Request` implements `Psr\Http\Message\RequestInterface`, and is intended for client-side requests. It includes the following methods:
+`GeeH\Hactoros\Request` implements `Psr\Http\Message\RequestInterface`, and is intended for client-side requests. It includes the following methods:
 
 ```php
 class Request
@@ -222,7 +222,7 @@ Requests are immutable. Any methods that would change state -- those prefixed wi
 
 ### ServerRequest Message
 
-For server-side applications, `Zend\Diactoros\ServerRequest` implements `Psr\Http\Message\ServerRequestInterface`, which provides access to the elements of an HTTP request, as well as uniform access to the various elements of incoming data. The methods included are:
+For server-side applications, `GeeH\Hactoros\ServerRequest` implements `Psr\Http\Message\ServerRequestInterface`, which provides access to the elements of an HTTP request, as well as uniform access to the various elements of incoming data. The methods included are:
 
 ```php
 class ServerRequest
@@ -244,7 +244,7 @@ The `ServerRequest` is immutable. Any methods that would change state -- those p
 
 ### Response Message
 
-`Zend\Diactoros\Response` provides an implementation of `Psr\Http\Message\ResponseInterface`, an object to be used to aggregate response information for both HTTP clients and server-side applications, including headers and message body content. It includes the following:
+`GeeH\Hactoros\Response` provides an implementation of `Psr\Http\Message\ResponseInterface`, an object to be used to aggregate response information for both HTTP clients and server-side applications, including headers and message body content. It includes the following:
 
 ```php
 class Response
@@ -263,7 +263,7 @@ Like the `Request` and `ServerRequest`, responses are immutable. Any methods tha
 
 #### ServerRequestFactory
 
-This static class can be used to marshal a `ServerRequest` instance from the PHP environment. The primary entry point is `Zend\Diactoros\ServerRequestFactory::fromGlobals(array $server, array $query, array $body, array $cookies, array $files)`. This method will create a new `ServerRequest` instance with the data provided. Examples of usage are:
+This static class can be used to marshal a `ServerRequest` instance from the PHP environment. The primary entry point is `GeeH\Hactoros\ServerRequestFactory::fromGlobals(array $server, array $query, array $body, array $cookies, array $files)`. This method will create a new `ServerRequest` instance with the data provided. Examples of usage are:
 
 ```php
 // Returns new ServerRequest instance, using values from superglobals:
@@ -284,7 +284,7 @@ $request = RequestFactory::fromGlobals(
 
 ### URI
 
-`Zend\Diactoros\Uri` is an implementation of `Psr\Http\Message\UriInterface`, and models and validates URIs. It implements `__toString()`, allowing it to be represented as a string and `echo()`'d directly. The following methods are pertinent:
+`GeeH\Hactoros\Uri` is an implementation of `Psr\Http\Message\UriInterface`, and models and validates URIs. It implements `__toString()`, allowing it to be represented as a string and `echo()`'d directly. The following methods are pertinent:
 
 ```php
 class Uri
@@ -299,7 +299,7 @@ Like the various message objects, URIs are immutable. Any methods that would cha
 
 ### Stream
 
-`Zend\Diactoros\Stream` is an implementation of `Psr\Http\Message\StreamInterface`, and provides a number of facilities around manipulating the composed PHP stream resource. The constructor accepts a stream, which may be either:
+`GeeH\Hactoros\Stream` is an implementation of `Psr\Http\Message\StreamInterface`, and provides a number of facilities around manipulating the composed PHP stream resource. The constructor accepts a stream, which may be either:
 
 - a stream identifier; e.g., `php://input`, a filename, etc.
 - a PHP stream resource
@@ -312,13 +312,13 @@ In most cases, you will not interact with the Stream object directly.
 
 ### UploadedFile
 
-`Zend\Diactoros\UploadedFile` is an implementation of `Psr\Http\Message\UploadedFileInterface`, and provides abstraction around a single uploaded file, including behavior for interacting with it as a stream or moving it to a filesystem location.
+`GeeH\Hactoros\UploadedFile` is an implementation of `Psr\Http\Message\UploadedFileInterface`, and provides abstraction around a single uploaded file, including behavior for interacting with it as a stream or moving it to a filesystem location.
 
 In most cases, you will only use the methods defined in the `UploadedFileInterface`.
 
 ### Server
 
-`Zend\Diactoros\Server` represents a server capable of executing a callback. It has four methods:
+`GeeH\Hactoros\Server` represents a server capable of executing a callback. It has four methods:
 
 ```php
 class Server
@@ -352,11 +352,11 @@ You can create an instance of the `Server` using any of the constructor, `create
 
 ## Emitting responses
 
-If you are using a non-SAPI PHP implementation and wish to use the `Server` class, or if you do not want to use the `Server` implementation but want to emit a response, this package provides an interface, `Zend\Diactoros\Response\EmitterInterface`, defining a method `emit()` for emitting the response. A single implementation is currently available, `Zend\Diactoros\Response\SapiEmitter`, which will use the native PHP functions `header()` and `echo` in order to emit the response. If you are using a non-SAPI implementation, you will need to create your own `EmitterInterface` implementation.
+If you are using a non-SAPI PHP implementation and wish to use the `Server` class, or if you do not want to use the `Server` implementation but want to emit a response, this package provides an interface, `GeeH\Hactoros\Response\EmitterInterface`, defining a method `emit()` for emitting the response. A single implementation is currently available, `GeeH\Hactoros\Response\SapiEmitter`, which will use the native PHP functions `header()` and `echo` in order to emit the response. If you are using a non-SAPI implementation, you will need to create your own `EmitterInterface` implementation.
 
 ## Serialization
 
-At times, it's useful to either create a string representation of a message (serialization), or to cast a string or stream message to an object (deserialization). This package provides features for this in `Zend\Diactoros\Request\Serializer` and `Zend\Diactoros\Response\Serializer`; each provides the following static methods:
+At times, it's useful to either create a string representation of a message (serialization), or to cast a string or stream message to an object (deserialization). This package provides features for this in `GeeH\Hactoros\Request\Serializer` and `GeeH\Hactoros\Response\Serializer`; each provides the following static methods:
 
 - `fromString($message)` will create either a `Request` or `Response` instance (based on the serializer used) from the string message.
 - `fromStream(Psr\Http\Message\StreamInterface $stream)` will create either a `Request` or `Response` instance (based on the serializer used) from the provided stream.

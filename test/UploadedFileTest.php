@@ -11,8 +11,8 @@ namespace ZendTest\Diactoros;
 
 use PHPUnit_Framework_TestCase as TestCase;
 use ReflectionProperty;
-use Zend\Diactoros\Stream;
-use Zend\Diactoros\UploadedFile;
+use GeeH\Hactoros\Stream;
+use GeeH\Hactoros\UploadedFile;
 
 class UploadedFileTest extends TestCase
 {

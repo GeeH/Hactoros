@@ -11,9 +11,9 @@ namespace ZendTest\Diactoros;
 
 use PHPUnit_Framework_TestCase as TestCase;
 use ReflectionProperty;
-use Zend\Diactoros\ServerRequest;
-use Zend\Diactoros\UploadedFile;
-use Zend\Diactoros\Uri;
+use GeeH\Hactoros\ServerRequest;
+use GeeH\Hactoros\UploadedFile;
+use GeeH\Hactoros\Uri;
 
 class ServerRequestTest extends TestCase
 {
