@@ -1,18 +1,11 @@
-zend-diactoros
+Hactoros
 ==============
 
-Master:
-[![Build status][Master image]][Master]
-[![Coverage Status][Master coverage image]][Master coverage]
-Develop:
-[![Build status][Develop image]][Develop]
-[![Coverage Status][Develop coverage image]][Develop coverage]
+> This is a fork of Hactoros which is intended to model PSR-7 HTTP messages on HHVM using Hack.
+> This docuementation is a find and replace of the original documentation, but will be updated at some point
 
-> Diactoros (pronunciation: `/dɪʌktɒrɒs/`): an epithet for Hermes, meaning literally, "the messenger."
 
-This package supercedes and replaces [phly/http](https://github.com/phly/http).
-
-`zend-diactoros` is a PHP package containing implementations of the [accepted PSR-7 HTTP message interfaces](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-7-http-message.md), as well as a "server" implementation similar to [node's http.Server](http://nodejs.org/api/http.html).
+`Hactoros` is a PHP package containing implementations of the [accepted PSR-7 HTTP message interfaces](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-7-http-message.md), as well as a "server" implementation similar to [node's http.Server](http://nodejs.org/api/http.html).
 
 This package exists:
 
@@ -26,12 +19,12 @@ Installation and Requirements
 Install this library using composer:
 
 ```console
-$ composer require zendframework/zend-diactoros
+$ composer require geeh/hactoros
 ```
 
-`zend-diactoros` has the following dependency (which is managed by Composer):
+`Hactoros` has the following dependency (which is managed by Composer):
 
-- [`psr/http-message`](https://github.com/php-fig/http-message), which defines interfaces for HTTP messages, including requests and responses. `zend-diactoros` provides implementations of each of these.
+- [`psr/http-message`](https://github.com/php-fig/http-message), which defines interfaces for HTTP messages, including requests and responses. `Hactoros` provides implementations of each of these.
 
 Usage
 -----
@@ -83,7 +76,7 @@ foreach ($response->getHeaders() as $header => $values) {
 printf("Message:\n%s\n", $response->getBody());
 ```
 
-(Note: `zend-diactoros` does NOT ship with a client implementation; the above is just an illustration of a possible implementation.)
+(Note: `Hactoros` does NOT ship with a client implementation; the above is just an illustration of a possible implementation.)
 
 ### Server-Side Applications
 
@@ -364,12 +357,3 @@ At times, it's useful to either create a string representation of a message (ser
 
 The deserialization methods (`from*()`) will raise exceptions if errors occur while parsing the message. The serialization methods (`toString()`) will raise exceptions if required data for serialization is not present in the message instance.
 
-
-  [Master]: https://travis-ci.org/zendframework/zend-diactoros
-  [Master image]: https://secure.travis-ci.org/zendframework/zend-diactoros.svg?branch=master
-  [Master coverage image]: https://img.shields.io/coveralls/zendframework/zend-diactoros/master.svg
-  [Master coverage]: https://coveralls.io/r/zendframework/zend-diactoros?branch=master
-  [Develop]: https://github.com/zendframeowork/zend-diactoros/tree/develop
-  [Develop image]:  https://secure.travis-ci.org/zendframework/zend-diactoros.svg?branch=develop
-  [Develop coverage image]: https://coveralls.io/repos/zendframework/zend-diactoros/badge.svg?branch=develop
-  [Develop coverage]: https://coveralls.io/r/zendframework/zend-diactoros?branch=develop
